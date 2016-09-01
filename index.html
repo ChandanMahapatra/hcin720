@@ -7,11 +7,43 @@
         <title>IA-1</title>
         <meta name="description" content="HCIN720 - Assignment 1">
         <link rel="stylesheet" href="styles.css">
+        <script src="js/jquery-3.1.0.js"></script>
+        <script src="js/paperjs-v0.10.2/dist/paper-full.js"></script> 
+        <script type="text/paperscript" canvas="paper">
+            
+            $(function()    
+                    {    
+                        var dataID = 'LHW0VPUEFWFT';
+                        var countryname = 'IN';
+                        var dataURL = 'http://api.timezonedb.com/v2/list-time-zone?key=' + dataID '&format=json&country=' + countryname;
+        
+                        $.ajax({
+                        url: dataURL,
+                        //data: {page: 1},
+                        dataType: 'jsonp',
+                        }).done(function(results))
+                        {
+                        console.log('There are ' + results.zones.zoneName);
+                        });
+    
+        
+                    });
+            
+        
+            
+
+        </script>
+    
+
+        
     </head>
     
     <body>
-        <script src="js/jquery-3.1.0.js"></script>
-        <script src="js/paperjs-v0.10.2/dist/paper-full.js"></script> 
+        
+        <h1>IA-1</h1>
+        <p></p>
+        <canvas id="paper" width="500px" height="200px" resize></canvas>
+        
     </body>
     
 </html>
