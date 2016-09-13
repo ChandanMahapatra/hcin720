@@ -11,6 +11,7 @@
         
         <!-- <link rel="stylesheet" href="styles.css"> -->
         
+        
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -20,6 +21,32 @@
         
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
         
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.25/paper-full.min.js"></script>
+        
+    <script type="text/paperscript" canvas="visualize-data">
+
+      for (var i = 0; i < 25; i++) 
+      {
+        var rX = Math.floor(Math.random() * view.size.width);
+        var rY = Math.floor(Math.random() * view.size.height);
+        var rR = Math.floor(Math.random() * 100);
+        var rColor = Math.random();
+        var gColor = Math.random();
+        var bColor = Math.random();
+        var alphaColor = Math.random();
+        var circle = new Path.Circle(new Point(rX, rY), rR);
+        circle.fillColor = new Color(rColor, gColor,bColor, alphaColor);
+      }
+
+      for (var i = 0; i < 20; i++) {
+        for (var j = 0; j < 20; j++) {
+          var myCircle = new Path.Circle(new Point(i + i * 100, j + j * 100), 3);
+          myCircle.fillColor = 'red';
+        }
+      }
+
+
+  </script>
         
       
        
@@ -30,8 +57,8 @@
         
         <h1 class="text-center">HCIN 720 -  Assignment 1</h1>
         
-            <canvas id="updating-chart" width="700" height="300" class="text-center"></canvas>
-            <p>Chart</p>
+            <canvas id="visualize-data" resize></canvas>
+            <p>Visualization</p>
         
         
         
@@ -42,11 +69,13 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         
+
+        
         
      
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script> -->
         <script src="http://cdn.pubnub.com/pubnub.min.js"></script>
-        <script src="app.js"></script>
+        <!-- <script src="abstractvisualization.js"></script>-->
         
     </body>
     
