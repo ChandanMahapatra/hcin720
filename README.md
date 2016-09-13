@@ -11,6 +11,8 @@ This assignment was to get Data from a Web API and to visualize it.
 * [D3](https://d3js.org/)
 * [Github](https://github.com/pubnub/tweet-emotion/blob/gh-pages/js/app.js)
 * [Stackoverflow](http://stackoverflow.com/questions/17354163/dynamically-update-values-of-a-chartjs-chart)
+* [jquery](https://jquery.com/)
+* [Bootstrap](http://getbootstrap.com/)
 
 link:
 [http://rawgit.com/chandan-mahapatra/IA-1/master/index.html)
