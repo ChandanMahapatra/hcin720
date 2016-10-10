@@ -14,7 +14,10 @@ This assignment was to get Data from a Web API and to visualize it.
 * [jquery](https://jquery.com/)
 * [Bootstrap](http://getbootstrap.com/)
 
-link:
+Graph visualization link:
 [http://rawgit.com/chandan-mahapatra/IA-1/master/index.html)
+
+Abstract visualization link:
+(http://rawgit.com/chandan-mahapatra/IA-1/master/abstractvisualization.html)
 
 
