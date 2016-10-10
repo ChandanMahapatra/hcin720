@@ -58,9 +58,9 @@ function displayData(detected)
     
     if(range>=50)
     {
-        if(height1==0)
+        if(height1!=0 && height1 >= height2)
         {
-            d3.selectAll("svg").remove();
+           d3.selectAll("svg").remove();
             var bodySelection = d3.select("#chart");
  
             var svgSelection = bodySelection.append("svg")
@@ -73,8 +73,7 @@ function displayData(detected)
                                               .attr("r", newSize1)
                                             .style("fill", "rgba(211,47,47,1)"); 
         }
-        
-        if(height2==0)
+        else if(height2!=0)
         {
             d3.selectAll("svg").remove();
             var bodySelection = d3.select("#chart");
@@ -92,7 +91,7 @@ function displayData(detected)
         
         else
         {   
-            d3.selectAll("svg").remove();
+           d3.selectAll("svg").remove();
             var bodySelection = d3.select("#chart");
  
             var svgSelection = bodySelection.append("svg")
@@ -105,7 +104,6 @@ function displayData(detected)
                                               .attr("r", circleSize)
                                             .style("fill", "rgba(3,169,244,1)"); 
         }
-
         height1 = 0; 
         height2 = 0;
         range = 0; 
