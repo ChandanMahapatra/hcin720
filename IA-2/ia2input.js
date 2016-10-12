@@ -23,6 +23,15 @@ window.setInterval(function() {
 
                      document.getElementById("switch-alarm").innerHTML = "Door is Closed";
 
+                    var alertBox = document.querySelector("#box-switch");
+                    alertBox.classList.remove("box-switch-Alert");
+                    var alertBox = document.querySelector("#box-switch");
+                    alertBox.classList.add("box-switch-noAlert");
+                    var alertBox = document.querySelector("#box-sensor");
+                    alertBox.classList.remove("box-sensor-Alert");
+                    var alertBox = document.querySelector("#box-sensor");
+                    alertBox.classList.add("box-sensor-noAlert");
+
                      if(newSensorValue>=1800) //proximity sensor object detection
                      {
                        document.getElementById("sensor-alarm").innerHTML = "Warning: Object is very close!!!";
@@ -40,8 +49,16 @@ window.setInterval(function() {
                 {
                     document.getElementById("switch-alarm").innerHTML = "ALERT !!! Door is open";
                     document.getElementById("sensor-alarm").innerHTML = "ALERT !!! Door is open";
+                    var alertBox = document.querySelector("#box-switch");
+                    alertBox.classList.remove("box-switch-noAlert");
+                    var alertBox = document.querySelector("#box-switch");
+                    alertBox.classList.add("box-switch-Alert");
+                    var alertBox = document.querySelector("#box-sensor");
+                    alertBox.classList.remove("box-sensor-noAlert");
+                    var alertBox = document.querySelector("#box-sensor");
+                    alertBox.classList.add("box-sensor-Alert");
                 }
 
                  });
 
-}, 2000);
+}, 1000);
