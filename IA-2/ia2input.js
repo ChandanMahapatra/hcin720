@@ -2,40 +2,46 @@ window.setInterval(function() {
 
         var deviceID = "32001e000347343339373536";
         var accessToken = "e3fe50ff3713e00c4becc30e2615bf20d27afe04";
-        var varName = "Uptime";
+        var varName = "inputSensors";
 
         requestURL = "https://api.particle.io/v1/devices/" + deviceID + "/" + varName + "/?access_token=" + accessToken;
 
         $.getJSON(requestURL, function(json) {
+
                 var getData = JSON.parse(json.result);
-                document.getElementById("switch").innerHTML = "The door sensor value is: " + getData.digitalvalue;
-                document.getElementById("switch").style.fontSize = "20px";
-                //document.getElementById("sensor").innerHTML = "The proximity sensor value is: " + json.result;
-                document.getElementById("sensor").innerHTML = "The proximity sensor value is: " + getData.analogvalue;
-                 document.getElementById("sensor").style.fontSize = "20px";
+
+
+                document.getElementById("switch").innerHTML = "The door sensor value is: " + getData.switchValue;
+                document.getElementById("switch").style.fontSize = "15px";
+                document.getElementById("sensor").innerHTML = "The proximity sensor value is: " + getData.sensorValue;
+                document.getElementById("sensor").style.fontSize = "15px";
+
+                var newSensorValue = +getData.sensorValue;//convert string to int
+
+                 if(getData.switchValue == "0")//if door sensor connected
+                 {
+
+                     document.getElementById("switch-alarm").innerHTML = "Door is Closed";
+
+                     if(newSensorValue>=1800) //proximity sensor object detection
+                     {
+                       document.getElementById("sensor-alarm").innerHTML = "Warning: Object is very close!!!";
+                     }
+                     else if(newSensorValue>=1200 && newSensorValue<1800)
+                     {
+                        document.getElementById("sensor-alarm").innerHTML = "Warning: Object is close";
+                     }
+                     else
+                     {
+                        document.getElementById("sensor-alarm").innerHTML = "No Object nearby";
+                     }
+                 }
+                else //door sensor not connected
+                {
+                    document.getElementById("switch-alarm").innerHTML = "ALERT !!! Door is open";
+                    document.getElementById("sensor-alarm").innerHTML = "ALERT !!! Door is open";
+                }
+
                  });
 
 }, 2000);
-
-/*
-window.setInterval(function() {
-        var deviceID = "32001e000347343339373536";
-        var accessToken = "e3fe50ff3713e00c4becc30e2615bf20d27afe04";
-        var varName = "digitalvalue";
-        var varName1 = "analogvalue";
-
-
-       requestURL = "https://api.spark.io/v1/devices/" + deviceID + "/" + varName + "/?access_token=" + accessToken;
-       requestURL1 = "https://api.spark.io/v1/devices/" + deviceID + "/" + varName1 + "/?access_token=" + accessToken;
-
-        $.getJSON(requestURL, function(json) {
-                 document.getElementById("switch").innerHTML = "The condition is: " + json.result ;
-                 document.getElementById("switch").style.fontSize = "20px";
-                 });
-
-        $.getJSON(requestURL1, function(json) {
-                 document.getElementById("sensor").innerHTML = "The sensor value is: " + json.result ;
-                 document.getElementById("sensor").style.fontSize = "20px";
-                 });
-}, 2000);
-*/
