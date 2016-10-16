@@ -4,8 +4,8 @@
 
 ### Part 1
 
-The first part of the assignment reads data from two sensors and visualizes it on a web page.
+In the first part of the assignment, the Photon reads data from two sensors and visualizes it on a web page.
 
 ### Part 2
 
-The second part of the assignment reads data from two sensors and visualizes it on a neopixel.
+In the second part of the assignment, the Photon reads data from two sensors and visualizes it on a neopixel.
