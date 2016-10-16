@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>IA-1</title>
+        <meta name="description" content="HCIN720 - Assignment 2 - Output Visualization">
+
+
+        <link rel="stylesheet" href="styles.css">
+
+        <!-- Latest compiled and minified Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Bootstrap Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+    </head>
+
+    <body>
+
+    <h1 class="text-center">HCIN 720 - Assignment 2 - Input Visualization</h1>
+    <div class="row">
+        <h3 class="text-center">Twitter Data Visualization</h3>
+    </div>
+    <div class="row start-visualization">
+        <div class="col-xs-4 col-xs-offset-3">
+            <div id="on-button">
+                 <button id="power-button-on"  onclick="powerOn()">On</button>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div id="off-button">
+                 <button id="power-button-off"  onclick="powerOff()">Off</button>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-xs-12">
+            <div id="led-state-display">
+                 <span id="led-state" >Led is ....</span>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- jquery CDN -->
+        <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+
+        <!-- Latest compiled and minified Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <!-- custom app -->
+        <script src="ia2output.js"></script>
+
+    </body>
+
+</html>

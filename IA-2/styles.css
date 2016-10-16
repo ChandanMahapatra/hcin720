@@ -73,3 +73,13 @@
     color: teal;
     font-style: italic;
 }
+
+/* Output Visualization*/
+
+#led-state-display{
+    margin-top: 40px;
+}
+
+.start-visualization {
+	margin-top: 40px;
+}
