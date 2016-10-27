@@ -1,68 +1,291 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
+    
+<head>
+    
+<style type="text/css">
 
-    <head>
+body, html { height:100%; }
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>IA-1</title>
-        <meta name="description" content="HCIN720 - Assignment 2 - Input Visualization">
+#myCanvas {
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+
+#closed {
+  margin-left: 665px;
+}
+
+#open {
+  margin-left: 665px;
+}
+
+#boxAlert{
+  font-size: 36px;
+  margin-left: 610px;
+  margin-top: -50px;
+}
+
+#warningAlert{
+  font-size: 24px;
+  margin-left: 630px;
+  margin-top: 320px;  
+    }    
+</style>
+    
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vivus/0.4.0/vivus.min.js" type="text/javascript" charset="utf-8"></script>
+    
+</head>    
+    
+<body>
+
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.9.25/paper-full.min.js"></script>
+<script type="text/javascript">
+     
+paper.install(window);
+	
+window.onload = function() 
+{
+paper.setup('myCanvas');
+        
+     var deviceID = "32001e000347343339373536";
+     var accessToken = "e3fe50ff3713e00c4becc30e2615bf20d27afe04";
+     var varName = "inputSensors";
+    
+     
+window.setInterval(function() {
+
+        requestURL = "https://api.particle.io/v1/devices/" + deviceID + "/" + varName + "/?access_token=" + accessToken;
+
+        $.getJSON(requestURL, function(json) {
+
+                var getData = JSON.parse(json.result);
+                var doorCond = +getData.switchValue;//convert string to int
+                var newSensorValue = +getData.sensorValue;//convert string to int
+                setNewValue(newSensorValue,doorCond);
+            
+                 });
+
+}, 1000);
+
+        
+var box = new Shape.Rectangle({
+    from: [850, 460],
+    to: [600, 320],
+    strokeColor: 'black',
+    strokeWidth: 5,
+    shadowColor: new Color(0, 0, 0),
+    shadowBlur: 12,
+    shadowOffset: new Point(5, 5)
+});     
+        
+var lid = new Shape.Rectangle({
+    point: [560, 270],
+    size: [330, 45],
+    radius: 10,
+    fillColor: {
+        gradient: {
+            stops: ['black', 'white']
+        },
+        origin: [20, 320],
+        destination: [360, 270]
+    },
+    strokeColor: 'black',
+    strokeWidth: 6,
+    strokeCap: 'round',
+    shadowColor: new Color(0, 0, 0),
+    shadowBlur: 12,
+    shadowOffset: new Point(5, 5)
+});
+        
+var lidCase = 0;  
+    
+function setNewValue(x,y)
+{
+    
+var prox = x;
+var doorSensor = y;
+var i;    
+
+var mainHeight; //Height of bar
+  
+var xChange; //Calculating change in bar height dynamically
+
+//Condition for calculating bar height    
+if(doorSensor == 0)
+{    
+ if(prox>=1800)
+  {
+    xChange = 100;    
+  }
+ else
+  {
+    xChange = (prox*100)/1800; 
+    xChange = Math.ceil(xChange);
+  }
+}
+else{
+    xChange = 100;    
+}            
+xChange = xChange/100;
+var startHeight = 460;
+var calcHeight = 140;
+var endHeight = 320;
+mainHeight = startHeight - (calcHeight*xChange);
+mainHeight = Math.ceil(mainHeight);
 
 
-        <link rel="stylesheet" href="styles.css">
+//Shape of Rectangle before updated values    
+var shape = new Shape.Rectangle({
+         from: [850, 460],
+         to: [600, 320],
+         fillColor: new Color(1, 1, 1)
+         });  
+    
+//Size of bar before updated values    
+var shape1 = new Shape.Rectangle({
+         from: [850, 460],
+         to: [600, mainHeight],
+         }); 
 
-        <!-- Latest compiled and minified Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+//Box condition, proximity graph logic and other animations             
+if (doorSensor == 0) 
+  {
+    //Stop alert sound
+    document.getElementById("alertSound").pause();
+    document.getElementById("alertSound").currentTime = 0;
+    //Display alert    
+    $("#open").hide();
+    $("#closed").show();
+    document.getElementById("boxAlert").innerHTML = "Box is CLOSED";        //document.getElementById("boxAlert").style.color = "green";
+    document.getElementById("boxAlert").style.color = "rgb(39, 153, 80)";  
+    if(lidCase == 1)    
+     {
+      for(i=0;i<70;i++)
+      {
+        lid.position.y+=1;
+      }
+        lidCase = 0;
+        new Vivus('closed', {
+        type: 'delayed',
+        duration: 250,
+        animTimingFunction: Vivus.EASE_OUT
+        });
+     }
+    else
+      {
+        lidCase = 0;
+      }
+      
+     if(prox>=1800) //proximity sensor object detection
+      {
+        document.getElementById("warningAlert").innerHTML = "WARNING: Object is very close";
+        document.getElementById("warningAlert").style.color = "rgb(255,87,34)";    
+        shape1.set({
+          from: [850, 460],
+         to: [600, mainHeight],
+         fillColor: '#FA693C'
+        }); 
+      }
+      else if(prox>=1200 && prox<1800) 
+      {
+        document.getElementById("warningAlert").innerHTML = "WARNING: Object is close";
+        document.getElementById("warningAlert").style.color = "rgb(241, 211, 40)";     
+        shape1.set({
+          from: [850, 460],
+         to: [600, mainHeight],
+         fillColor: '#FDDD3C'
+        });
+      }
+      else 
+      {
+        document.getElementById("warningAlert").innerHTML = "Everything is safe :)";
+        document.getElementById("warningAlert").style.color = "rgb(39, 153, 80)";   
+        shape1.set({
+          from: [850, 460],
+         to: [600, mainHeight],
+         fillColor: '#2AA657'
+        }); 
+      }
+      
+  }
+  else
+  {
+    //Play Alert Sound
+    document.getElementById("alertSound").load();
+    document.getElementById("alertSound").play();  
+    //Display alert  
+    $("#closed").hide();
+    $("#open").show();
+    document.getElementById("boxAlert").innerHTML = "Box is OPEN";
+    document.getElementById("boxAlert").style.color = "rgb(218, 33, 32)";  
+    document.getElementById("warningAlert").innerHTML = "ALERT!";
+    document.getElementById("warningAlert").style.color = "rgb(218, 33, 32)";   
+    shape1.set({
+          from: [850, 460],
+         to: [600, mainHeight],
+         //fillColor: new Color(1, 0, 0)
+        fillColor: '#DA2120'
+        });   
+      
+    if(lidCase == 0)
+     {
+       for(i=70;i>0;i--)
+      {
+        lid.position.y-=1;
+      }
+       lidCase = 1;
+       new Vivus('open', {
+       type: 'delayed',
+       duration: 250,
+       animTimingFunction: Vivus.EASE_OUT
+       });   
+     }
+    else
+      {
+        lidCase = 1;
+      } 
+  }   
+view.draw(); 
+} 
+        
+}   
+    
+</script>
 
-        <!-- Bootstrap Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+<canvas id="myCanvas"></canvas>
 
-    </head>
+<!--Closed SVG-->
+<svg id="closed" width="200px" height="200px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <rect id="Rectangle" stroke="none" fill="#FFFFFF" fill-rule="evenodd" x="0" y="0" width="200" height="200"></rect>
+    <circle id="Oval" stroke="#5CA64B" stroke-width="7" fill="#FFFFFF" fill-rule="evenodd" cx="100" cy="100" r="70"></circle>
+    <path d="M67,116 C67,116 88.5,137 95,135 C101.5,133 133,65 133,65" id="Path-2" stroke="#5CA64A" stroke-width="10" fill="none"></path>
+</svg>
 
-    <body>
+<!--Open SVG-->
+<svg id="open" width="200px" height="200px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <rect id="Rectangle" stroke="none" fill="#FFFFFF" fill-rule="evenodd" x="0" y="0" width="200" height="200"></rect>
+    <circle id="Oval" stroke="#D41D1D" stroke-width="7" fill="#FFFFFF" fill-rule="evenodd" cx="100" cy="100" r="70"></circle>
+    <path d="M99.1506054,99.7566969 L67.5540971,68.1601886 L67.2510513,67.8571429 L67.8571429,67.2510513 L68.1601886,67.5540971 L99.7566969,99.1506054 L131.353205,67.5540971 L131.656251,67.2510513 L132.262342,67.8571429 L131.959297,68.1601886 L100.362788,99.7566969 L131.959297,131.353205 L132.262342,131.656251 L131.656251,132.262342 L131.353205,131.959297 L99.7566969,100.362788 L68.1601886,131.959297 L67.8571429,132.262342 L67.2510513,131.656251 L67.5540971,131.353205 L99.1506054,99.7566969 Z" id="Combined-Shape" stroke="#D41D1D" stroke-width="7" stroke-linecap="square" fill="none"></path>
+</svg>
 
-    <h1 class="text-center">HCIN 720 - Assignment 2 - Input Visualization</h1>
-    <div class="row">
-        <div class="row">
-            <h3 class="text-center">Door Sensor Alert System</h3>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-3">
-                <div id="switch-heading">
-                    <span>Main Door Sensor</span>
-                </div>
-                <div id="switch-alarm">
-                    <span>Waiting for data...</span>
-                </div>
-                <div id="box-switch" class="box-switch-noAlert">
-                </div>
-                <span id="switch">Waiting for data...</span>
-            </div>
-            <div class="col-md-4">
-                <div id="sensor-heading">
-                    <span>Proximity Sensor</span>
-                </div>
-                <div id="sensor-alarm">
-                    <span>Waiting for data...</span>
-                </div>
-                <div id="box-sensor" class="box-sensor-noAlert">
-                </div>
-                <span id="sensor">Waiting for data...</span>
-            </div>
-        </div>
-    </div>
+<div>
+  <h2 id="boxAlert">Loading....</h2> 
+  <h3 id="warningAlert">Loading....</h3> 
+</div>  
 
-
-       <!-- jquery CDN -->
-        <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
-
-        <!-- Latest compiled and minified Bootstrap JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-        <!-- custom app -->
-        <script src="ia2input.js"></script>
-
-    </body>
-
+<!-- Alert Sound -->
+<audio id="alertSound" src="https://notificationsounds.com/sound-effects/just-like-magic-506/download/mp3" preload="auto"></audio>
+    
+</body>
 </html>
