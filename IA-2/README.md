@@ -29,7 +29,7 @@ Libraries and other resources:
 * Sketchapp
 * MP3 alert sound - link: https://notificationsounds.com
 
-Sensor visualization link: http://rawgit.com/chandan-mahapatra/IA-1/master/abstractvisualization.html
+Sensor visualization link: http://rawgit.com/chandan-mahapatra/hcin720/master/IA-2/ia2input.html
 
 ### Part 2
 
@@ -56,4 +56,4 @@ Libraries and other resources:
 * Particle.io
 * Particle Community - link: https://community.particle.io/t/tutorial-spark-variable-and-function-on-one-web-page
 
-Neopixel visualization link: http://rawgit.com/chandan-mahapatra/IA-1/master/index.html
+Nexopixel visualization link: http://rawgit.com/chandan-mahapatra/hcin720/master/IA-2/ia2output.html
