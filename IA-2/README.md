@@ -9,6 +9,13 @@ In the first part of the assignment, the Photon reads data from two sensors (mag
 #### Working
 The sensors on the photon detect if the box has been opened and also if there is a object near the box. This informaton is visualized on the web application. The web application uses **paper.js** to create a virtual box, and visualize data from the proximity sensor and magnetic door sensor.
 
+#### Input Circuit
+![1](https://cloud.githubusercontent.com/assets/14539609/19778778/40e0d984-9c4c-11e6-9a10-039d27df45f0.jpg)
+
+#### Input Visualization
+![1](https://cloud.githubusercontent.com/assets/14539609/19778822/7737db36-9c4c-11e6-8e4b-beab22982bab.gif)
+
+
 Libraries and other resources:
 
 * Github
@@ -33,9 +40,10 @@ If the word **game** is used (in 50 tweets/sec), the color **red** is displayed 
 Similarly, if the word **people** is used, the color **green** is displayed on the neopixel. Finally, if these two words are not present (in 50 tweets/sec), the color **blue** is displayed on the neopixel.
 
 #### Output Circuit
+![2](https://cloud.githubusercontent.com/assets/14539609/19778848/8b9e8ad4-9c4c-11e6-86ca-c438c7a9649c.jpg)
 
 #### Output Visualization
-
+![2](https://cloud.githubusercontent.com/assets/14539609/19778859/94de13d0-9c4c-11e6-9a07-4f0a95af5478.gif)
 
 Libraries and other resources:
 
