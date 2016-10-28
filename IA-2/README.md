@@ -45,7 +45,7 @@ In the second part of the assignment, the Photon gets data from Pubnub's Twitter
 If the word **game** is used (in 50 tweets/sec), the color **red** is displayed on the neopixel.
 Similarly, if the word **people** is used, the color **green** is displayed on the neopixel. Finally, if these two words are not present (in 50 tweets/sec), the color **blue** is displayed on the neopixel.
 
-* A2 = Neopixel output
+* D2 = Neopixel output
 
 #### Output Circuit
 ![outputcircuit](https://cloud.githubusercontent.com/assets/14539609/19794210/7a82acce-9c9e-11e6-8970-3ed4e75bfaf2.jpg)
