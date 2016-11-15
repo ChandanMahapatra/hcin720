@@ -1,51 +1,40 @@
-# HCIN720 Assignment 2
+# HCIN720 Assignment 3
 
-## IA 2
+## IA 3
 
-### Part 1
+### Secure Box
 
-In the first part of the assignment, the Photon reads data from two sensors (magnetic door sensor and proximity sensor) and visualizes it on a web application. 
+The secure box keeps content safe by detecting if an object is nearby and also by warning the user if the box has been opened. This box is also visualized on a web application. The web application helps you monitor the box remotely.
 
 #### Working
-The sensors on the photon detect if the box has been opened and also if there is a object near the box. This informaton is visualized on the web application. The web application uses **paper.js** to create a virtual box, and visualize data from the proximity sensor and magnetic door sensor.
+The sensors on the photon detect if the box has been opened and also if there is an object near the box. This informaton is visualized on the web application. The web application uses **paper.js** to create a virtual box, and visualizes data from the proximity sensor and magnetic door sensor. 
+
+The neopixel changes color depending on how close an object gets to the proximity sensor, and if the lid is open or not.
+
+#### 3D Printing
+The lid of the box has been 3D printed so that it fits perfectly onto the wooden box base.
+
+#### Laser Cutting
+The wooden box has been cut out by using a laser cutter.
+
+##### Extra Part: OLED 
+It provides text output that helps the user understand the current state of the device, i.e, if the box is open or not.
 
 Libraries and other resources:
 
 * Github
-* paper.js 
-* vivus.js (For SVG Animation)
+* LulzBot Mini 3D Printer - link: https://www.lulzbot.com/store/printers/lulzbot-mini
+* Tinkercad - https://www.tinkercad.com/
+* VersaLASER, Laser Cutter
+* Illustrator - https://www.adobe.com/products/illustrator.html
+* paper.js - link: http://paperjs.org
+* vivus.js (For SVG Animation) - link: https://github.com/maxwellito/vivus
 * Stackoverflow
 * jquery
 * Instructables
 * Particle.io
 * Particle Community - link: https://community.particle.io/t/tutorial-spark-variable-and-function-on-one-web-page
-* Sketchapp
+* SketchApp - link: https://www.sketchapp.com
 * MP3 alert sound - link: https://notificationsounds.com
 
-Sensor visualization link: http://rawgit.com/chandan-mahapatra/IA-1/master/abstractvisualization.html
-
-### Part 2
-
-In the second part of the assignment, the Photon gets data from Pubnub's Twitter feed aand visualizes it on a neopixel. A simple web application is used to start and stop the visualization.
-
-#### Working
-If the word **game** is used (in 50 tweets/sec), the color **red** is displayed on the neopixel.
-Similarly, if the word **people** is used, the color **green** is displayed on the neopixel. Finally, if these two words are not present (in 50 tweets/sec), the color **blue** is displayed on the neopixel.
-
-#### Output Circuit
-
-#### Output Visualization
-
-
-Libraries and other resources:
-
-* Pubnub
-* Github
-* Stackoverflow
-* jquery
-* Bootstrap
-* Instructables
-* Particle.io
-* Particle Community - link: https://community.particle.io/t/tutorial-spark-variable-and-function-on-one-web-page
-
-Neopixel visualization link: http://rawgit.com/chandan-mahapatra/IA-1/master/index.html
+Secure Box visualization link: http://rawgit.com/chandan-mahapatra/IA-1/master/abstractvisualization.html
