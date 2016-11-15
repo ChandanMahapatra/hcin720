@@ -41,4 +41,4 @@ Libraries and other resources:
 * SketchApp - link: https://www.sketchapp.com
 * MP3 alert sound - link: https://notificationsounds.com
 
-Secure Box visualization link: http://rawgit.com/chandan-mahapatra/IA-1/master/abstractvisualization.html
+Secure Box visualization link: http://rawgit.com/chandan-mahapatra/hcin720/master/IA-3/ia3.html
