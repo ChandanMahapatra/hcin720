@@ -107,6 +107,3 @@ function displayData(detected)
         range = 0;
     }
 }
-
-
-
