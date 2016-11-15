@@ -6,10 +6,14 @@
 
 The secure box keeps content safe by detecting if an object is nearby and also by warning the user if the box has been opened. This box is also visualized on a web application. The web application helps you monitor the box remotely.
 
+![ia3](https://cloud.githubusercontent.com/assets/14539609/20319112/ebd5b6dc-ab3a-11e6-9051-7d87f098f891.jpg)
+
 #### Working
 The sensors on the photon detect if the box has been opened and also if there is an object near the box. This informaton is visualized on the web application. The web application uses **paper.js** to create a virtual box, and visualizes data from the proximity sensor and magnetic door sensor. 
 
 The neopixel changes color depending on how close an object gets to the proximity sensor, and if the lid is open or not.
+
+![ia3](https://cloud.githubusercontent.com/assets/14539609/20319111/ebcd8962-ab3a-11e6-8b57-57b84ff50e8a.GIF)
 
 #### 3D Printing
 The lid of the box has been 3D printed so that it fits perfectly onto the wooden box base.
