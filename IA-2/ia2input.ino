@@ -19,8 +19,13 @@ void loop() {
    Serial.println(data);//print output values.
    Serial.println(digitalRead(switchPin));
    readSensorValue = analogRead(sensorIn);
+<<<<<<< HEAD
    readSwitchValue = digitalRead(switchPin);
    unsigned sensorValue = readSensorValue;
+=======
+   readSwitchValue = digitalRead(switchPin);
+   unsigned sensorValue = readSensorValue;
+>>>>>>> origin/master
    unsigned switchValue =  readSwitchValue;
    sprintf(postString,"{\"sensorValue\": %u, \"switchValue\": %u}",sensorValue,switchValue);
    Particle.variable("inputSensors", postString, STRING);
@@ -31,11 +36,19 @@ void loop() {
       {
           Serial.println("WARNING!");
       }
+<<<<<<< HEAD
       else if(data>=1200 && data<1800)
       {
           Serial.println("Close");
       }
       else
+=======
+      else if(data>=1200 && data<1800)
+      {
+          Serial.println("Close");
+      }
+      else
+>>>>>>> origin/master
       {
           Serial.println("No Problem");
       }
@@ -46,4 +59,8 @@ void loop() {
      Serial.println("ALERT!!!!!!!");
     }
    delay(200);  //just to slow down the output, that is, remove reading of passing object
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/master
