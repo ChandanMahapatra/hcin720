@@ -106,8 +106,4 @@ function displayData(detected)
         wordPeople = 0;
         range = 0;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/master
