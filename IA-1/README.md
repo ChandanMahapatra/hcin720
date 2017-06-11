@@ -2,7 +2,7 @@
 
 ## IA 1
 
-For this assignment I had to get Data from a Web API and to visualize it. I used the Pubnub Twitter Stream API to get realtime data. This data was then visualized using Chartjs. This visualization helps to count the number of times two words, game and people, are used in 50 Tweets per second.
+For this assignment I had to get Data from a Web API and visualize it. I used the Pubnub Twitter Stream API to get realtime data. This data was then visualized using Chartjs. This visualization helps to count the number of times two words, game and people, are used in 50 Tweets per second.
 
 ### Libraries and other resources:
 
