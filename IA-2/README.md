@@ -16,10 +16,13 @@ The sensors on the photon detect if the box has been opened and also if there is
 For assignment-1 I had used D3.js to dyanmically change color and size of a circle for abstract visualization. I had also used chart.js for the other visualization. The visualization was for Pubnub's Twitter feed.
 
 #### Input Circuit
+
 ![inputcircuit](https://cloud.githubusercontent.com/assets/14539609/19794211/7a851432-9c9e-11e6-9255-5c0958b4e333.jpg)
 
 <br />
+
 #### Input Visualization
+
 ![inputcircuit](https://cloud.githubusercontent.com/assets/14539609/19794209/7a68fae0-9c9e-11e6-9696-8cddd9d5d7ab.gif)
 
 ### Part 2
@@ -38,7 +41,9 @@ Similarly, if the word **people** is used, the color **green** is displayed on t
 ![outputcircuit](https://cloud.githubusercontent.com/assets/14539609/19794210/7a82acce-9c9e-11e6-8970-3ed4e75bfaf2.jpg)
 
 <br />
+
 #### Output Visualization
+
 ![outputcircuit](https://cloud.githubusercontent.com/assets/14539609/19794212/7a857c42-9c9e-11e6-962d-e8e2fd3966d9.gif)
 
 
