@@ -15,9 +15,9 @@ This assignment was to get Data from a Web API and to visualize it.
 * [Bootstrap](http://getbootstrap.com/)
 
 Graph visualization link:
-[http://rawgit.com/chandan-mahapatra/hcin720/master/IA-1/abstractvisualization.html)
+(http://rawgit.com/chandan-mahapatra/hcin720/master/IA-1/index.html)
 
 Abstract visualization link:
-(http://rawgit.com/chandan-mahapatra/IA-1/master/abstractvisualization.html)
+(http://rawgit.com/chandan-mahapatra/hcin720/master/IA-1/abstractvisualization.html)
 
 
